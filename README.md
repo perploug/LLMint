@@ -1,6 +1,26 @@
 # AIWebQualityEvals
-typescript library to use LLMs for common website content quality evaluations
+typescript library to use LLMs for common website content quality evaluations using LLMs understanding of semantics
 
+Based on the POC outlined in this [blogpost](http://plo.ug/llms,/typescript,/testing/2025/06/26/LLMs-for-testing.html)
+
+Library is focused on making common tasks discoverable, rather than depending on broad general functions, tests should 
+be readable by reading the prompt and function calls to understand what is going on, less making, more explicit. 
+
+Library is focused on using local LLMs such as Docker Model Runner and Ollama. 
+
+Can be used against live websites, but primary focus is ontop of Testcontainers based tests. 
+
+## Overview
+
+1. Plugin any LLM, comes with Docker Model Runner and TestContainers Supper
+2. Use either fetch for serverside html, or headless browser to evaluate DOM
+3. Comes with overridable system prompts and task prompts
+4. Adjustable adherence to standards, strict or loose
+5. Test framework agnostic
+
+## How to use
+
+Library is agnostic to the test framework 
 
 ## Features
 

@@ -1,5 +1,5 @@
-# AIWebQualityEvals
-typescript library to use LLMs for common website content quality evaluations using LLMs understanding of semantics
+# AI Based Web Quality Eval library
+typescript library to use LLMs for common non-AI website content quality evaluations using LLMs understanding of semantics 
 
 Based on the POC outlined in this [blogpost](http://plo.ug/llms,/typescript,/testing/2025/06/26/LLMs-for-testing.html)
 

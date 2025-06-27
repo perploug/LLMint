@@ -20,7 +20,7 @@ Can be used against live websites, but primary focus is ontop of Testcontainers 
 
 ## How to use
 
-Library is agnostic to the test framework 
+Library is agnostic to test framework, it simply needs a URL or raw html string to perform the evals, using either local or hosted LLM 
 
 ## Features
 

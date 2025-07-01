@@ -1,0 +1,42 @@
+{
+  "name": "llmint",
+  "version": "1.0.0",
+  "description": "typescript library to use LLMs for common non-AI website content quality evaluations using LLMs understanding of semantics",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "tsc && node build/index.js",
+    "test": "jest --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perploug/llmint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perploug/llmint/issues"
+  },
+  "homepage": "https://github.com/perploug/llmint#readme",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.3.22",
+    "@ai-sdk/openai-compatible": "^0.2.14",
+    "ai": "^4.3.16",
+    "is-docker": "^3.0.0",
+    "node-html-parser": "^7.0.1",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.0.3",
+    "@tsconfig/node20": "^20.1.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.7",
+    "jest": "^30.0.3",
+    "jest-expect-message": "^1.1.3",
+    "ts-jest": "^29.4.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

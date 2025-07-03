@@ -1,12 +1,12 @@
 var HTMLParser = require("node-html-parser");
 
-type fetchParams = {
+export type fetchParams = {
   url: string;
   selector?: string;
   filter?: Array<string>;
 };
 
-const fetchScraper = async function (params: fetchParams): Promise<string> {
+export async function fetchScraper(params: fetchParams): Promise<string> {
   if (!params.selector) {
     params.selector = "body";
   }
@@ -22,7 +22,13 @@ const fetchScraper = async function (params: fetchParams): Promise<string> {
     });
   }
 
-  return element.innerHTML;
-};
+  // lets remove all the css stuff we dont need for these evals
+  let h = element.innerHTML;
+  //h = h
+  //  .replace(/<([^ >]+)[^>]*>/gi, "<$1>")
+  //  .replace(/^\s+|\s+$|\s+(?=\s)/g, "");
+
+  return h;
+}
 
 export default fetchScraper;

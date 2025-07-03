@@ -1,4 +1,4 @@
-import { generateObject, GenerateObjectResult, LanguageModelV1 } from "ai";
+import { generateObject, LanguageModelV1 } from "ai";
 import { z } from "zod";
 
 const EvalResultSchema = z.object({
@@ -11,6 +11,9 @@ const EvalResultSchema = z.object({
   result: z
     .enum(["good", "medium", "bad"])
     .describe("Describing the evaluation outcome as either good,medium or bad"),
+  suggestions: z
+    .array(z.string())
+    .describe("List of suggestions for improvements, if any"),
 });
 
 export type EvalResult = z.infer<typeof EvalResultSchema>;
@@ -21,13 +24,11 @@ export type EvalInstance<TParams> = {
 
 export abstract class AbstractEval<TParams> {
   model: LanguageModelV1;
-  scraper: (params: any) => Promise<string>;
   params?: TParams = undefined;
   systemPrompt: string;
 
-  constructor(model: LanguageModelV1, scraper: any, systemPrompt: string) {
+  constructor(model: LanguageModelV1, systemPrompt: string) {
     this.model = model;
-    this.scraper = scraper;
     this.systemPrompt = systemPrompt;
   }
 

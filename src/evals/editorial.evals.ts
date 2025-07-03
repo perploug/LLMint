@@ -1,10 +1,8 @@
-// Page copy ----------------------
-
 import { LanguageModelV1 } from "ai";
-import { EvalInstance } from "./AbstractEval";
-import ToneOfVoice from "./pagecopy/tone-of-voice";
+import ToneOfVoice from "./editorial/toneofvoice";
+import Readability from "./editorial/readability";
 
-export default class PageCopy {
+export default class EditorialEvals {
   systemPrompt: string = "You read copy, its cool";
   model: any;
   scraper: any;
@@ -15,17 +13,13 @@ export default class PageCopy {
 
     if (systemPrompt) this.systemPrompt = systemPrompt;
 
-    this.toneOfVoice = new ToneOfVoice(
-      this.model,
-      this.scraper,
-      this.systemPrompt
-    );
+    this.toneOfVoice = new ToneOfVoice(this.model, this.systemPrompt);
+    this.readability = new Readability(this.model, this.systemPrompt);
   }
 
   toneOfVoice: ToneOfVoice;
+  readability: Readability;
 }
-
-// tone of voice
 
 // readability
 // redundant content

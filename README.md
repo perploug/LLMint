@@ -1,5 +1,7 @@
 # LLMint - Web Quality Eval library
 
+Note: This is WIP with limited functionality implemented
+
 LLMint is an open-source TypeScript toolkit that brings quality assurance to modern websites using large language models. Validate content structure, tone of voice, SEO integrity, internal linking, and accessibility — all powered by prompt-based inspections and test container automation. LLMint helps you ensure your web experience is clear, consistent, inclusive, and aligned with user intent.
 
 

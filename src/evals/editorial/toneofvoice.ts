@@ -1,37 +1,28 @@
-import { AbstractEval, EvalResult } from "../AbstractEval";
+import { AbstractEval } from "../AbstractEval";
+import { EvalParams } from "../EvalParams";
 
-type ToneOfVoiceParams = {
-  html: string;
+type ToneOfVoiceParams = EvalParams & {
   styleguide: string;
-  instructions?: string;
 };
 
-const INSTRUCTIONS = `Evaluate the tone of this html content `;
-
 class ToneOfVoice extends AbstractEval<ToneOfVoiceParams> {
-  async run(params?: ToneOfVoiceParams | undefined): Promise<EvalResult> {
-    const prompt = `
-    ${this.params?.instructions ? this.params.instructions : INSTRUCTIONS}
+  instructions: string = `Evaluate the tone of this html content and determine if it has a good/medium/bad adherence to the styleguide and a rating from 0-100`;
+
+  async createPrompt(): Promise<Array<{ key: string; prompt: string }>> {
+    const pa = await super.createPrompt();
+
+    if (this.params) {
+      pa.push({
+        key: "styleguide",
+        prompt: `Styleguide: ###
+
+    ${this.params.styleguide}
     
-    Styleguide: ###
+    ###`,
+      });
+    }
 
-    ${this.params?.styleguide}
-    
-    ###
-
-    Review this html and determine if it has a good/medium/bad adherence to the styleguide and a rating from 0-100
-
-    Html: ###
-    
-    ${this.params?.html}
-
-    ###
-
-    Only respond in json, with the following format: 
-    {"result": "good|medium|bad|", "reason": string, rating: number  }
-    `;
-
-    return await super.generateObject(prompt);
+    return pa;
   }
 }
 

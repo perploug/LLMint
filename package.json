@@ -2,7 +2,10 @@
   "name": "llmint",
   "version": "1.0.0",
   "description": "typescript library to use LLMs for common non-AI website content quality evaluations using LLMs understanding of semantics",
-  "main": "index.js",
+  
+  "main": "dist/index.js",
+	"files": ["dist"],
+  
   "directories": {
     "test": "test"
   },

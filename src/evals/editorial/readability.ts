@@ -1,36 +1,29 @@
 import { AbstractEval, EvalResult } from "../AbstractEval";
+import { EvalParams } from "../EvalParams";
 
-type ReadabilityParams = {
-  html: string;
+type ReadabilityParams = EvalParams & {
   audience: string;
-  instructions?: string;
 };
 
-const INSTRUCTIONS = `
-Assess reading level and clarity for target audience, 
-
-Is this html content readable and appropriate for a general audience? 
-Suggest any sentences that could be made clearer or simpler
-`;
-
 class Readability extends AbstractEval<ReadabilityParams> {
-  async run(params?: ReadabilityParams | undefined): Promise<EvalResult> {
-    const prompt = `
-    ${this.params?.instructions ? this.params.instructions : INSTRUCTIONS}
-    
-    Target Audience: ${this.params?.audience}
+  instructions = `
+        Assess reading level and clarity for target audience, 
 
-    Html Content: ###
-    
-    ${this.params?.html}
+        Is this html content readable and appropriate for a general audience? 
+        Suggest any sentences that could be made clearer or simpler
+        `;
 
-    ###
+  async createPrompt(): Promise<Array<{ key: string; prompt: string }>> {
+    const pa = await super.createPrompt();
 
-    Only respond in json, with the following format: 
-    {"result": "good|medium|bad|", "reason": string, rating: number  }
-    `;
+    if (this.params) {
+      pa.splice(1, 0, {
+        key: "audience",
+        prompt: `Target Audience: ${this.params.audience}`,
+      });
+    }
 
-    return await super.generateObject(prompt);
+    return pa;
   }
 }
 

@@ -16,7 +16,7 @@ Can be used against live websites, but primary focus is ontop of Testcontainers 
 
 ## Overview
 
-1. Plugin any LLM, comes with Docker Model Runner and TestContainers Supper
+1. Plugin any LLM, comes with Docker Model Runner and TestContainers support
 2. Use either fetch for serverside html, or headless browser to evaluate DOM
 3. Comes with overridable system prompts and task prompts
 4. Adjustable adherence to standards, strict or loose

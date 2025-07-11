@@ -15,7 +15,7 @@ Can be used against live websites, but primary focus is ontop of Testcontainers 
 
 ## Overview
 
-1. Plugin any LLM, comes with Docker Model Runner and TestContainers Supper
+1. Plugin any LLM, comes with Docker Model Runner and TestContainers support
 2. Use either fetch for serverside html, or headless browser to evaluate DOM
 3. Comes with overridable system prompts and task prompts
 4. Adjustable adherence to standards, strict or loose
@@ -25,11 +25,43 @@ Can be used against live websites, but primary focus is ontop of Testcontainers 
 
 Library is agnostic to test framework, it simply needs a URL or raw html string to perform the evals, using either local or hosted LLM
 
-## Example
+## Examples
+
+### Setting up with with Docker Model Runner or Vercel AI SDK provider
+
+```javascript
+
+// DMR:
+cons llmint = new LLMint("ai/qwen3");
+
+// openai:
+import { createOpenAI } from "@ai-sdk/openai";
+const openai = createOpenAI({
+    apiKey: "...",
+  });
+const model = openai("gpt-4-turbo");
+cons llmint = new LLMint(model);
+
+llmint.editorial
+        .toneOfVoice
+        .evaluate({...})
+```
+
+### Tone of voice:
+
+```javascript
+    const ev = await llmint.editorial.toneOfVoice.evaluate({
+      styleguide: "Write short and concisely",
+      content: "<body>...</body>,
+      expectation: `I expect this article to follow the styleguide provided and
+                    be about how this body tag is completely empty`,
+    });
+```
+
+### Validate content for a given persona, intent and expectation
 
 ```javascript
 import LLMint from "llmint";
-
 const llmint = new LLMint("ai/qwen3");
 
 it("Blog posts should be listed with punchy headlines and sorted by date", async () => {

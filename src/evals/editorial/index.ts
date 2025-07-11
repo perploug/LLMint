@@ -10,10 +10,11 @@ export default class EditorialEvals {
                           as well as a clear reason and suggestions for improvements
                           
                           Respond in short, crisp and to the point sentences.
+                                  
 
-                                  `;
-  //You are extremely critical of following the guidelines and point out even the smallest
-  //         mistakes.
+          `;
+
+  //You focus on following the guidelines and point out even small mistakes.
 
   model: LanguageModelV1;
 

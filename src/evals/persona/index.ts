@@ -6,12 +6,10 @@ export default class PersonaEvals {
                           
                           Respond in short, crisp and to the point sentences.
 
+                          You focus on following the guidelines and point out even small
+          mistakes
                          
                           `;
-
-  // You are extremely critical of insuring the content lives up the intent and expectatons
-  //                    of the persona and point out even the smallest mistakes.
-
   model: LanguageModelV1;
 
   constructor(model: LanguageModelV1, systemPrompt?: string) {

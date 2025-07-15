@@ -20,7 +20,6 @@ const EvalResultSchema = z.object({
 });
 
 export type EvalResult = z.infer<typeof EvalResultSchema>;
-
 export type EvalInstance<TParams = EvalParams> = {
   run(params?: TParams): Promise<EvalResult>;
 };
@@ -32,11 +31,20 @@ export abstract class AbstractEval<TParams = EvalParams> {
   model: LanguageModelV1;
   params?: TParams = undefined;
 
-  // system prompt provided by overarching class
+  // instructions are for the individual eval
   abstract instructions: string;
+
+  // system prompt provided by overarching class
   readonly systemPrompt: string;
 
   constructor(model: LanguageModelV1, systemPrompt: string) {
+    /*
+    if (typeof model === "string") {
+      model = dmr(model as string);
+    } else {
+      model = model as LanguageModelV1;
+    } */
+
     this.model = model;
     this.systemPrompt = systemPrompt;
   }

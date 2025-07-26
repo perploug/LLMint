@@ -7,7 +7,7 @@ class NextSteps extends AbstractEval<EvalParams> {
 Does the content guide the user clearly to a logical next action or step in their journey? Identify any gaps or unclear transitions
 
 If intent, expectation, or a persona is provided, take this into account
-when evaluated the CTA compared to the content. 
+when evaluating the suggested next steps compared to the content. 
 `;
 }
 

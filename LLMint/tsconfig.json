@@ -1,0 +1,26 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 20",
+  "_version": "20.1.0",
+
+  "compilerOptions": {
+    "lib": ["es2023"],
+    "module": "nodenext",
+    "target": "es2022",
+    "sourceMap": true,
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "nodenext",
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "isolatedModules": true
+  },
+  "files": ["node_modules/jest-expect-message/types/index.d.ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts"],
+}

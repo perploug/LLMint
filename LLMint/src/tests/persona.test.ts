@@ -1,7 +1,7 @@
 jest.setTimeout(500000);
 
-import Persona from ".";
-import { HtmlContentGenerator } from "../../generator/htmlContent";
+import Persona from "../eval/persona";
+import { HtmlContentGenerator } from "../generator/htmlContent";
 
 describe("Persona Evals Qwen3 Tests", () => {
   let persona: Persona;
@@ -43,8 +43,6 @@ describe("Persona Evals Qwen3 Tests", () => {
                 </main>
             `,
     });
-
-    console.log(content);
 
     const result = await persona.validateIntent.evaluate({
       content: content,

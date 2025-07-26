@@ -1,8 +1,9 @@
 import { LanguageModelV1 } from "ai";
 import CallToAction from "./callToAction";
 import NextSteps from "./nextSteps";
+import { AbstractEvalCollection } from "../AbstractEvalCollection";
 
-export default class EditorialEvals {
+export default class UserJourney extends AbstractEvalCollection {
   systemPrompt: string = `You are a user experience agent, you review the provided content for 
                           issues with the user journey and ensure that pages take UX best practices into accounts.
 
@@ -14,12 +15,8 @@ export default class EditorialEvals {
   You focus on following the guidelines and point out even small
           mistakes.`;
 
-  model: LanguageModelV1;
-
-  constructor(model: LanguageModelV1, systemPrompt?: string) {
-    this.model = model;
-
-    if (systemPrompt) this.systemPrompt = systemPrompt;
+  constructor(model: LanguageModelV1 | string) {
+    super(model);
 
     this.callToAction = new CallToAction(this.model, this.systemPrompt);
     this.nextSteps = new NextSteps(this.model, this.systemPrompt);

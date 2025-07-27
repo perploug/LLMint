@@ -20,7 +20,6 @@
     "rootDir": "./src",
     "isolatedModules": true
   },
-  "files": ["node_modules/jest-expect-message/types/index.d.ts"],
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
 }

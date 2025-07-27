@@ -15,12 +15,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "nodenext",
-    "outDir": "./build",
+    "outDir": "./dist",
     "baseUrl": "./src",
     "rootDir": "./src",
     "isolatedModules": true
   },
-  "files": ["node_modules/jest-expect-message/types/index.d.ts"],
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
 }

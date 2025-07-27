@@ -15,7 +15,7 @@ export default class Editorial extends AbstractEvalCollection {
 
   //You focus on following the guidelines and point out even small mistakes.
 
-  constructor(model: LanguageModelV1 | string) {
+  constructor(model: LanguageModelV1) {
     super(model);
 
     this.toneOfVoice = new ToneOfVoice(this.model, this.systemPrompt);

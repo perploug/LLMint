@@ -1,9 +1,4 @@
-import {
-  createOpenAICompatible,
-  OpenAICompatibleChatLanguageModel,
-  OpenAICompatibleChatSettings,
-} from "@ai-sdk/openai-compatible";
-import { LanguageModelV1 } from "ai";
+import { OpenAICompatibleChatLanguageModel } from "@ai-sdk/openai-compatible";
 
 const dmr = function (
   modelName = "ai/qwen3",

@@ -15,7 +15,7 @@ export default class UserJourney extends AbstractEvalCollection {
   You focus on following the guidelines and point out even small
           mistakes.`;
 
-  constructor(model: LanguageModelV1 | string) {
+  constructor(model: LanguageModelV1) {
     super(model);
 
     this.callToAction = new CallToAction(this.model, this.systemPrompt);

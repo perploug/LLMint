@@ -16,7 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "nodenext",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
     "isolatedModules": true
   },
   "files": ["node_modules/jest-expect-message/types/index.d.ts"],

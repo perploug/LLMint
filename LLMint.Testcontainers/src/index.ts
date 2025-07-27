@@ -1,10 +1,8 @@
-import LLmint from "llmint";
-import { HtmlContentGenerator } from "llmint/dist/generator/htmlContent";
 import { DockerModelRunnerContainer } from "./docker-model-runner";
-import { createOpenAI } from "@ai-sdk/openai";
 
-require("dotenv").config();
+export default DockerModelRunnerContainer;
 
+/*
 async function run() {
   console.time();
   const dmr = await new DockerModelRunnerContainer("alpine/socat:latest")
@@ -39,3 +37,4 @@ async function run() {
 }
 
 run();
+*/

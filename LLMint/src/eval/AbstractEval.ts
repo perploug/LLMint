@@ -16,7 +16,7 @@ const EvalResultSchema = z.object({
   suggestions: z
     .array(z.string())
     .describe("List of suggestions for improvements, if any"),
-  prompt: z.string(),
+  prompt: z.string().nullable().optional().describe("Leave empty"),
 });
 
 export type EvalResult = z.infer<typeof EvalResultSchema>;
@@ -38,13 +38,6 @@ export abstract class AbstractEval<TParams = EvalParams> {
   readonly systemPrompt: string;
 
   constructor(model: LanguageModelV1, systemPrompt: string) {
-    /*
-    if (typeof model === "string") {
-      model = dmr(model as string);
-    } else {
-      model = model as LanguageModelV1;
-    } */
-
     this.model = model;
     this.systemPrompt = systemPrompt;
   }

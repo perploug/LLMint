@@ -12,7 +12,7 @@ import { createOpenAI } from "@ai-sdk/openai";
  * Editorial tests for determining if html content follows best practices
  */
 describe.each(consts.models)(`Editorial`, (model) => {
-  describe(`${model.type} - ${model.model}`, () => {
+  describe(`${model.type}:${model.model}`, () => {
     let llmint: LLmint;
     let html: HtmlContentGenerator;
 

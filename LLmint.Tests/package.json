@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
+    "setup-models" : "docker model pull ai/smollm3 && docker model pull ai/gemma3 && docker model pull ai/qwen3",
     "start": "env-cmd --file .env.node -- tsc && node dist/index.js",
-    "test": "env-cmd --file .env.node -- jest --detectOpenHandles"
+    "test": "env-cmd --file .env.node -- jest --detectOpenHandles && npm run report",
+    "report" : "tsc ./src/report/index.ts --resolveJsonModule && node ./src/report/index.js"
   },
   "author": "",
   "license": "ISC",

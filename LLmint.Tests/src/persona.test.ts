@@ -7,8 +7,8 @@ import dmr from "./llm/docker-model-runner";
 import consts from "./consts";
 import { createOpenAI } from "@ai-sdk/openai";
 
-describe.each(consts.models)(`Persona Evals`, (model) => {
-  describe(`${model.type} - ${model.model}: Persona Evals`, () => {
+describe.each(consts.models)(`Persona`, (model) => {
+  describe(`${model.type}:${model.model}`, () => {
     let llmint: LLmint;
     let html: HtmlContentGenerator;
 

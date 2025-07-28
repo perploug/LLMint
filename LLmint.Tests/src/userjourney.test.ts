@@ -8,8 +8,8 @@ import consts from "./consts";
 import { createOpenAI } from "@ai-sdk/openai";
 import { LanguageModelV1 } from "ai";
 
-describe.each(consts.models)(`Userjourney Evals`, (model) => {
-  describe(`${model.type} - ${model.model}: Userjourney Evals`, () => {
+describe.each(consts.models)(`Userjourney`, (model) => {
+  describe(`${model.type}:${model.model}`, () => {
     let llmint: LLmint;
     let html: HtmlContentGenerator;
 

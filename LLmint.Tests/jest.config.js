@@ -5,7 +5,8 @@ const tsJestTransformCfg = createDefaultPreset().transform;
 /** @type {import('@tsdoc-test-reporter/jest').TsDocTestReporterConfig} */
 const options = {
   outputFileName: "tsdoc-report",
-  outputFileType: `html`,
+  outputFileType: `json`,
+  outputJsonAs: "raw",
 };
 
 /** @type {import("jest").Config} **/

@@ -10,15 +10,12 @@ import {
   Wait,
 } from "testcontainers";
 
-/* @ts-ignore */
-import streamPromise from "stream-promise";
-
 export class DockerModelRunnerContainer extends SocatContainer {
   private model: string | undefined = undefined;
   private static MODEL_RUNNER_ENDPOINT: string = "model-runner.docker.internal";
   private static PORT: number = 80;
 
-  constructor(image: string) {
+  constructor(image: string = "alpine/socat:latest") {
     super(image);
     this.withTarget(
       DockerModelRunnerContainer.PORT,
@@ -47,17 +44,44 @@ export class DockerModelRunnerContainer extends SocatContainer {
         DockerModelRunnerContainer.PORT
       )}/models/create`;
 
+      const payload = { from: this.model };
+
       try {
         const response = await fetch(url, {
           method: "POST",
+          body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" },
         });
 
+        console.log("ok: " + response.ok);
+
         const reader = response.body?.getReader();
-        await streamPromise(await reader?.read(), { noCollect: true });
+        let charsReceived = 0;
+
+        if (!reader) throw "reader is undefined";
+
+        // read() returns a promise that resolves
+        // when a value has been received
+        reader.read().then(function processText({ done, value }): any {
+          // Result objects contain two properties:
+          // done  - true if the stream has already given you all its data.
+          // value - some data. Always undefined when done is true.
+          if (done) {
+            console.log("Model download complete");
+            return;
+          }
+          // value for fetch streams is a Uint8Array
+          charsReceived += value.length;
+          console.log(value);
+          console.log("Chars received: " + charsReceived);
+
+          // Read some more, and call this function again
+          return reader.read().then(processText);
+        });
       } catch (ex: unknown) {
         const err = ex as Error;
         log.error(`Failed to pull model: ${this.model}: ${err.message} `);
+        throw `Failed to pull model: ${this.model}: ${err.message} `;
       }
 
       log.info(`Finished pulling model: ${this.model}`);

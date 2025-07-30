@@ -1,4 +1,4 @@
-const { createDefaultPreset } = require("ts-jest");
+import { createDefaultPreset } from "ts-jest";
 
 const tsJestTransformCfg = createDefaultPreset().transform;
 
@@ -10,12 +10,10 @@ const options = {
 };
 
 /** @type {import("jest").Config} **/
-module.exports = {
-  reporters: ["default", ["@tsdoc-test-reporter/jest", options]],
-  preset: "ts-jest",
-  testEnvironment: "node",
-  setupFilesAfterEnv: ["jest-expect-message"],
-  transform: {
-    ...tsJestTransformCfg,
-  },
+export const reporters = ["default", ["@tsdoc-test-reporter/jest", options]];
+export const preset = "ts-jest";
+export const testEnvironment = "node";
+export const setupFilesAfterEnv = ["jest-expect-message"];
+export const transform = {
+  ...tsJestTransformCfg,
 };

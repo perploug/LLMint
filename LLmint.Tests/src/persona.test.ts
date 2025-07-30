@@ -32,7 +32,7 @@ describe.each(consts.models)(`Persona`, (model) => {
       html = new HtmlContentGenerator(modelProvider);
     });
 
-    it("Hello world", async () => {
+    it("Content should be indetified as a simple Hello World page", async () => {
       const content = `
         <h1>Hello world!</h1>
         <p>Hello world! - this is just a simple article</p>
@@ -47,7 +47,7 @@ describe.each(consts.models)(`Persona`, (model) => {
       expect(result.result, result.reason).toBe("good");
     });
 
-    it("Identify the content of an article", async () => {
+    it("Article content should match persona, intent and expectations", async () => {
       const content = await html.generate({
         instructions:
           "Generate a 200 word news article  about flying cars with headline, publishing date, introduction and body text",
@@ -73,7 +73,7 @@ describe.each(consts.models)(`Persona`, (model) => {
       expect(result.result, result.reason).toBe("good");
     });
 
-    it("validate search results", async () => {
+    it("search results should match query, persona and intent", async () => {
       const content = await html.generate({
         instructions:
           "Generate a list of 10 search results for the query 'flying cars' results should be targetted a technical persona, with click baity and inticing headlines, ensure summaries include technical details on model and features",
@@ -109,6 +109,44 @@ describe.each(consts.models)(`Persona`, (model) => {
       });
 
       expect(result.result, result.reason).toBe("good");
+
+      const bad_result = await llmint.persona.validateIntent.evaluate({
+        content: content,
+        persona: {
+          name: "Elementary school teacher",
+          description: `You are an elementary school teacher, you are not technical, but prefer academic litterature on your different topics of interest.`,
+        },
+        intent:
+          "I'm searching the site for 'flying cats and looking for content useful for grade school students to get excited about how great flying cats are",
+        expectation: `I expect 10 search results, mostly about flying cats, for children or tweens to get excited about the topic`,
+      });
+
+      expect(bad_result.result, bad_result.reason).toBe("bad");
+    });
+
+    it("search results should mismatch persona, but match expecation", async () => {
+      const content = await html.generate({
+        instructions:
+          "Generate a list of 10 search results for the query 'flying cars' results should be targetted a technical persona, with click baity and inticing headlines, ensure summaries include technical details on model and features",
+        format: `Should have the following html structure:
+                <main>
+                <div id='search'>
+                    <h1>Search Results:</h1>
+
+                    <ul>
+                      <-- each result should use this below format -->
+                      <li>
+                      <h2><a href="LINK">HEADLINE</h2>
+                        <time datetime="">Publishing time</time>
+                        <article>
+                          Search result summary
+                        </article>
+                      </li>
+                    </ul>
+                </article>
+                </main>
+            `,
+      });
 
       const bad_result = await llmint.persona.validateIntent.evaluate({
         content: content,

@@ -17,28 +17,28 @@ All local models run via Docker Model Runner
 
 # Test Results
 
-## Userjourney
-
-| **Test Case** |  **local:ai/qwen3** | **local:ai/gemma3** | **local:ai/smollm3** | **openai:gpt-4-turbo** |
-| --- |  --- | --- | --- | --- |
-| Verify product page has a clear call to action |  🟢  <br><small>28.018 Sec</small> | 🔴  <br><small>8.479 Sec</small> | 🔴  <br><small>15.122 Sec</small> | 🟢  <br><small>6.079 Sec</small> |
-| Verify form guides user to the next step |  🔴  <br><small>36.366 Sec</small> | 🔴  <br><small>13.195 Sec</small> | 🔴  <br><small>26.943 Sec</small> | 🔴  <br><small>11.245 Sec</small> |
-
-
 ## Persona
 
-| **Test Case** |  **local:ai/qwen3** | **local:ai/gemma3** | **local:ai/smollm3** | **openai:gpt-4-turbo** |
-| --- |  --- | --- | --- | --- |
-| Hello world |  🟢  <br><small>6.77 Sec</small> | 🟢  <br><small>3.156 Sec</small> | 🟢  <br><small>2.706 Sec</small> | 🟢  <br><small>1.921 Sec</small> |
-| Identify the content of an article |  🟢  <br><small>36.108 Sec</small> | 🟢  <br><small>8.873 Sec</small> | 🟢  <br><small>22.989 Sec</small> | 🟢  <br><small>9.365 Sec</small> |
-| validate search results |  🟢  <br><small>115.983 Sec</small> | 🟢  <br><small>63.045 Sec</small> | 🔴  <br><small>48.547 Sec</small> | 🟢  <br><small>39.924 Sec</small> |
+| **Test Case** |  **local:ai/qwen3** | **local:ai/gemma3** | **local:ai/smollm3** | **local:ai/smollm2** | **openai:gpt-4-turbo** |
+| --- |  --- | --- | --- | --- | --- |
+| Hello world |  🟢  <br><small>6.034 Sec</small> | 🟢  <br><small>3.108 Sec</small> | 🟢  <br><small>3.204 Sec</small> | 🟢  <br><small>0.824 Sec</small> | 🟢  <br><small>2.948 Sec</small> |
+| Identify the content of an article |  🟢  <br><small>33.894 Sec</small> | 🟢  <br><small>9.106 Sec</small> | 🟢  <br><small>23.182 Sec</small> | 🔴  <br><small>117.529 Sec</small> | 🟢  <br><small>13.678 Sec</small> |
+| validate search results |  🟢  <br><small>117.746 Sec</small> | 🟢  <br><small>64.541 Sec</small> | 🔴  <br><small>49.165 Sec</small> | 🔴  <br><small>137.226 Sec</small> | 🟢  <br><small>37.989 Sec</small> |
 
 
 ## Editorial
 
-| **Test Case** |  **local:ai/qwen3** | **local:ai/gemma3** | **local:ai/smollm3** | **openai:gpt-4-turbo** |
-| --- |  --- | --- | --- | --- |
-| Verify tone of voice follows styleguide |  🟢  <br><small>48.408 Sec</small> | 🟢  <br><small>17.294 Sec</small> | 🟢  <br><small>24.268 Sec</small> | 🟢  <br><small>11.689 Sec</small> |
-| Verify tone of voice is completely off |  🟢  <br><small>42.054 Sec</small> | 🟢  <br><small>13.504 Sec</small> | 🔴  <br><small>23.736 Sec</small> | 🟢  <br><small>11.569 Sec</small> |
+| **Test Case** |  **local:ai/qwen3** | **local:ai/gemma3** | **local:ai/smollm3** | **local:ai/smollm2** | **openai:gpt-4-turbo** |
+| --- |  --- | --- | --- | --- | --- |
+| Verify tone of voice follows styleguide |  🟢  <br><small>43.935 Sec</small> | 🟢  <br><small>17.712 Sec</small> | 🟢  <br><small>24.677 Sec</small> | 🟢  <br><small>1.735 Sec</small> | 🟢  <br><small>10.899 Sec</small> |
+| Verify tone of voice is completely off |  🟢  <br><small>39.632 Sec</small> | 🟢  <br><small>13.854 Sec</small> | 🔴  <br><small>24.764 Sec</small> | 🔴  <br><small>3.985 Sec</small> | 🟢  <br><small>12.413 Sec</small> |
+
+
+## Userjourney
+
+| **Test Case** |  **local:ai/qwen3** | **local:ai/gemma3** | **local:ai/smollm3** | **local:ai/smollm2** | **openai:gpt-4-turbo** |
+| --- |  --- | --- | --- | --- | --- |
+| Verify product page has a clear call to action |  🟢  <br><small>30.016 Sec</small> | 🔴  <br><small>7.301 Sec</small> | 🔴  <br><small>14.874 Sec</small> | 🔴  <br><small>74.245 Sec</small> | 🔴  <br><small>8.818 Sec</small> |
+| Verify form guides user to the next step |  🔴  <br><small>36.084 Sec</small> | 🔴  <br><small>12.257 Sec</small> | 🔴  <br><small>23.037 Sec</small> | 🔴  <br><small>73.733 Sec</small> | 🔴  <br><small>12.078 Sec</small> |
 
 

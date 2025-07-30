@@ -13,6 +13,10 @@ export default {
       model: "ai/smollm3",
     },
     {
+      type: "local",
+      model: "ai/smollm2",
+    },
+    {
       type: "openai",
       model: "gpt-4-turbo",
     },

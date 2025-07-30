@@ -1,7 +1,7 @@
 import { generateObject, LanguageModelV1 } from "ai";
 import { z } from "zod";
 import { EvalParams, FetchParams } from "./EvalParams";
-var HTMLParser = require("node-html-parser");
+const HTMLParser = require("node-html-parser");
 
 const EvalResultSchema = z.object({
   reason: z.string().describe("the reasoning for the rating"),

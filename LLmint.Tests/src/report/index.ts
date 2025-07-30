@@ -15,7 +15,7 @@ interface TestSuite {
   snapshot: Snapshot;
   testFilePath: string;
   testResults: TestResult[];
-  failureMessage: null;
+  failureMessage: string | null;
 }
 
 interface TestResult {

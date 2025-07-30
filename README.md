@@ -23,7 +23,7 @@ Core library for semantic evaluation of website content, written in typescript, 
 
 ### [LLMint.Tests](./LLmint.Tests/)
 
-Test suite to compare different local LLMs with OpenAI GPT-4, complete test report available [here](LLmint.Tests/tsdoc-report.html) (WIP)
+Test suite to compare different local LLMs with OpenAI GPT-4, readme.md shows latest test report
 
 ### [LLMint.Testcontainers](./LLMint.Testcontainers/)
 
